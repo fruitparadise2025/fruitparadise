@@ -79,6 +79,35 @@
     <p class="text-green-900 font-semibold">Katalog Buah-Buahan.</p>
   </header>
 
+
+
+<!-- Search Bar -->
+
+
+<!-- Sorting Dropdown -->
+<div class="mb-6 w-full flex justify-center">
+  <select id="sortSelect" onchange="applySort()" 
+    class="px-4 py-2 border rounded-lg shadow text-sm bg-white">
+    <option value="">⇅ Urutkan</option>
+    <option value="priceAsc">Harga ↑</option>
+    <option value="priceDesc">Harga ↓</option>
+    <option value="nameAsc">Nama A → Z</option>
+    <option value="nameDesc">Nama Z → A</option>
+  </select>
+</div>
+
+
+<div class="mb-6 w-full max-w-md">
+  <input 
+    type="text" 
+    id="searchInput" 
+    onkeyup="searchCards()" 
+    placeholder="Cari buah..." 
+    class="w-full px-4 py-2 border rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-green-500" />
+</div>
+
+
+
   <!-- Main Grid -->
   <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl w-full">
     
@@ -674,6 +703,67 @@
         }, 500);
       }, 3000);
     }
+
+    // Sorting berdasarkan harga
+    function sortCards(order) {
+      const main = document.querySelector("main");
+      const cards = Array.from(main.querySelectorAll(".card"));
+      cards.sort((a, b) => {
+        const priceA = extractPrice(a);
+        const priceB = extractPrice(b);
+        return order === "asc" ? priceA - priceB : priceB - priceA;
+      });
+      cards.forEach(card => main.appendChild(card));
+    }
+
+    function extractPrice(card) {
+      const priceText = card.innerText.match(/Rp\s?([\d\.]+)/);
+      if (priceText) {
+        return parseInt(priceText[1].replace(/\./g, ""));
+      }
+      return Number.MAX_VALUE;
+    }
+
+    // Sorting berdasarkan nama
+    function sortCardsByName(order) {
+      const main = document.querySelector("main");
+      const cards = Array.from(main.querySelectorAll(".card"));
+      cards.sort((a, b) => {
+        const nameA = a.querySelector("h2").innerText.toLowerCase();
+        const nameB = b.querySelector("h2").innerText.toLowerCase();
+        if (nameA < nameB) return order === "asc" ? -1 : 1;
+        if (nameA > nameB) return order === "asc" ? 1 : -1;
+        return 0;
+      });
+      cards.forEach(card => main.appendChild(card));
+    }
+
+
+    // Fungsi pencarian
+    function searchCards() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const cards = document.querySelectorAll("main .card");
+
+      cards.forEach(card => {
+        const name = card.querySelector("h2").innerText.toLowerCase();
+        if (name.includes(input)) {
+          card.style.display = "flex"; // tampilkan
+        } else {
+          card.style.display = "none"; // sembunyikan
+        }
+      });
+    }
+
+
+    // Fungsi dropdown untuk sorting
+    function applySort() {
+      const value = document.getElementById("sortSelect").value;
+      if (value === "priceAsc") sortCards("asc");
+      else if (value === "priceDesc") sortCards("desc");
+      else if (value === "nameAsc") sortCardsByName("asc");
+      else if (value === "nameDesc") sortCardsByName("desc");
+    }
+
   </script>
 </body>
 </html>
