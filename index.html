@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Katalog Penjualan Buah-Buahan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: #fdfaf6;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 12px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+    }
+
+    .btn-order {
+      background: #34d399; /* emerald */
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .btn-order:hover {
+      background: #059669;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #10b981;
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-out {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center p-6">
+
+  <!-- Header -->
+  <header class="mb-10 text-center max-w-xl">
+    <h1 class="text-4xl font-extrabold text-green-700 mb-2">Katalog Buah-Buahan</h1>
+    <p class="text-green-900 font-semibold">Penawaran terbaik dan segar langsung dari petani.</p>
+  </header>
+
+  <!-- Main Grid -->
+  <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl w-full">
+    
+    <!-- Card 1: Anggur Mix -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Anggur Mix.jpeg" 
+        alt="Tampak close up anggur mix berwarna merah, hijau dan hitam segar, tersusun rapih dalam pak plastik bening" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Anggur Mix</h2>
+        <ul class="text-green-700 flex-grow space-y-1 text-sm mb-4">
+          <li>1 kg - Rp 70.000</li>
+          <li>500 gr - Rp 36.000</li>
+        </ul>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Anggur%20Mix" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Anggur Mix')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card 2: Mangga Gedong -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Mangga Gedong.jpeg" 
+        alt="Tumpukan mangga gedong berwarna kuning segar khas dengan bintik-bintik di permukaan kulitnya" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Mangga Gedong</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 29.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Mangga%20Gedong" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Mangga Gedong')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card 3: Autum Royal Curah -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Autum royal curah.jpeg" 
+        alt="Keranjang berisi anggur autum royal hitam segar memiliki permukaan sedikit mengkilat tersusun rapih" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Autum Royal Curah</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 75.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Autum%20Royal%20Curah" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Autum Royal Curah')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card 4: Mangga Kaweni -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Mangga kaweni.jpeg" 
+        alt="Close up buah mangga kaweni berukuran besar, hijau segar di tangan dengan latar belakang tumpukan buah serupa" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Mangga Kaweni</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 28.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Mangga%20Kaweni" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Mangga Kaweni')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Pir Century -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Pir Century.jpeg" 
+        alt="Pir Century segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Pir Century</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 28.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Pir%20Century" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Pir Century')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Apel Fuji Super Blush Prime -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Jambu kristal Kudus.jpeg" 
+        alt="Apel Fuji Super Blush Prime segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Apel Fuji Super Blush Prime</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 46.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Apel%20Fuji%20Super%20Blush%20Prime" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Apel Fuji Super Blush Prime')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Apel Fuji Honestman -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Apel Fuji Honestman.jpeg" 
+        alt="Apel Fuji Honestman segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Apel Fuji Honestman</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 36.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Apel%20Fuji%20Honestman" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Apel Fuji Honestman')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Jeruk Sunkist Valecia Joytree -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Jeruk Sunkist Valecia Joytree.jpeg" 
+        alt="Jeruk Sunkist Valecia Joytree segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Jeruk Sunkist Valecia Joytree</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 38.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Jeruk%20Sunkist%20Valecia%20Joytree" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Jeruk Sunkist Valecia Joytree')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Jeruk Medan Mini -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Jeruk Medan Mini.jpeg" 
+        alt="Jeruk Medan Mini segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Jeruk Medan Mini</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 20.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Jeruk%20Medan%20Mini" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Jeruk Medan Mini')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Jeruk Imperial Ausie -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Jeruk Imperial Ausie.jpeg" 
+        alt="Jeruk Imperial Ausie segar, manis, dan wangi" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Jeruk Imperial Ausie</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 40.000 / kg, manis wangi enakk</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Jeruk%20Imperial%20Ausie" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Jeruk Imperial Ausie')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Anggur Autum Royal rrc -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Anggur Autum Royal rrc.jpeg" 
+        alt="Anggur Autum Royal rrc segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Anggur Autum Royal rrc</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 70.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Anggur%20Autum%20Royal%20rrc" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Anggur Autum Royal rrc')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Anggur Redglobe rrc Premium -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Anggur Redglobe rrc Premium.jpeg" 
+        alt="Anggur Redglobe rrc Premium segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Anggur Redglobe rrc Premium</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 48.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Anggur%20Redglobe%20rrc%20Premium" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Anggur Redglobe rrc Premium')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Anggur Shine Muscat -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Anggur Shine Muscat.jpeg" 
+        alt="Anggur Shine Muscat segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Anggur Shine Muscat</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 38.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Anggur%20Shine%20Muscat" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Anggur Shine Muscat')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Anggur Red Crimson rrc -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Anggur Red Crimson rrc.jpeg" 
+        alt="Anggur Red Crimson rrc segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Anggur Red Crimson rrc</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 40.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Anggur%20Red%20Crimson%20rrc" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Anggur Red Crimson rrc')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Pir Pakam -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Pir Pakam.jpeg" 
+        alt="Pir Pakam segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Pir Pakam</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 39.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Pir%20Pakam" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Pir Pakam')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Pir Singo -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Pir Singo.jpeg" 
+        alt="Pir Singo segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Pir Singo</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 38.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Pir%20Singo" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Pir Singo')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Pir Forella -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Pir Forella.jpeg" 
+        alt="Pir Forella segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Pir Forella</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 52.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Pir%20Forella" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Pir Forella')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Jambu Kristal Sunpride -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Jambu Kristal Sunpride.jpeg" 
+        alt="Jambu Kristal Sunpride segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Jambu Kristal Sunpride</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 28.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Jambu%20Kristal%20Sunpride" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Jambu Kristal Sunpride')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Pisang Sunpride (FSH) Full Small Hand -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Pisang Sunpride (FSH) Full Small Hand.jpeg" 
+        alt="Pisang Sunpride (FSH) Full Small Hand segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Pisang Sunpride (FSH) Full Small Hand</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 23.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Pisang%20Sunpride%20(FSH)%20Full%20Small%20Hand" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Pisang Sunpride (FSH) Full Small Hand')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Nanas Honi Sunpride Super Jumbo Uk XXl -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Nanas Honi Sunpride Super Jumbo Uk XXl.jpeg" 
+        alt="Nanas Honi Sunpride Super Jumbo Uk XXl segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Nanas Honi Sunpride Super Jumbo Uk XXl</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 28.000 / butir</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Nanas%20Honi%20Sunpride%20Super%20Jumbo%20Uk%20XXl" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Nanas Honi Sunpride Super Jumbo Uk XXl')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Mangga Cengkir Mengkel -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Mangga Cengkir.jpeg" 
+        alt="Mangga Cengkir Mengkel segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Mangga Cengkir Mengkel</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 29.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Mangga%20Cengkir%20Mengkel" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Mangga Cengkir Mengkel')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Mangga Cengker Matang -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Mangga Cengkir.jpeg" 
+        alt="Mangga Cengker Matang segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Mangga Cengker Matang</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 25.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Mangga%20Cengker%20Matang" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Mangga Cengker Matang')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Mangga Madu Simanalagi -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Mangga Madu Simanalagi.jpeg" 
+        alt="Mangga Madu Simanalagi segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Mangga Madu Simanalagi</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 28.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Mangga%20Madu%20Simanalagi" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Mangga Madu Simanalagi')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Buah Naga Super -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Buah Naga Super.jpeg" 
+        alt="Buah Naga Super segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Buah Naga Super</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 28.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Buah%20Naga%20Super" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Buah Naga Super')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Jambu Kristal Kebumen -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Jambu Kristal Kebumen.jpeg" 
+        alt="Jambu Kristal Kebumen segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Jambu Kristal Kebumen</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 20.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Jambu%20Kristal%20Kebumen" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Jambu Kristal Kebumen')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Belimbing Madu Dewi -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Belimbing Madu Dewi.jpeg" 
+        alt="Belimbing Madu Dewi segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Belimbing Madu Dewi</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 26.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Belimbing%20Madu%20Dewi" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Belimbing Madu Dewi')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Pepaya California -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Pepaya California.jpeg" 
+        alt="Pepaya California segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Pepaya California</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 15.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Pepaya%20California" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Pepaya California')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Kiwi Hijau rrc -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Kiwi Hijau rrc.jpeg" 
+        alt="Kiwi Hijau rrc segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Kiwi Hijau rrc</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 26.000 / 500gr</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Kiwi%20Hijau%20rrc" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Kiwi Hijau rrc')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Lengkeng Bangkok Gold -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Lengkeng Bangkok Gold.jpeg" 
+        alt="Lengkeng Bangkok Gold segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Lengkeng Bangkok Gold</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 38.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Lengkeng%20Bangkok%20Gold" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Lengkeng Bangkok Gold')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Delima Black Pearl -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Delima Black Pearl.jpeg" 
+        alt="Delima Black Pearl segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Delima Black Pearl</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 23.000 / buah</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Delima%20Black%20Pearl" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Delima Black Pearl')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Cherry USA -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Cherry USA.jpeg" 
+        alt="Cherry USA segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Cherry USA</h2>
+        <ul class="text-green-700 flex-grow space-y-1 text-sm mb-4">
+          <li>100 gr - Rp 28.000</li>
+          <li>250 gr - Rp 58.000</li>
+          <li>500 gr - Rp 110.000</li>
+        </ul>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Cherry%20USA" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Cherry USA')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Nangka Kupas -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Nangka Kupas.jpeg" 
+        alt="Nangka Kupas segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Nangka Kupas</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 20.000 / pack (kurang lebih 500 gr)</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Nangka%20Kupas" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Nangka Kupas')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Kurma Ruthob -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Kurma Ruthob.jpeg" 
+        alt="Kurma Ruthob segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Kurma Ruthob</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 37.000 (Berat kurang lebih 350 gr)</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Kurma%20Ruthob" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Kurma Ruthob')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Celery Stick -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Celery Stick.jpeg" 
+        alt="Celery Stick segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Celery Stick</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 34.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Celery%20Stick" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Celery Stick')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Jambu Kristal Kudus -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Jambu Kristal Kudus.jpeg" 
+        alt="Jambu Kristal Kudus segar" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Jambu Kristal Kudus</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 36.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Jambu%20Kristal%20Kudus" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Jambu Kristal Kudus')">Order Sekarang</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-14 text-center text-green-900 font-semibold text-sm">
+    <p>Hubungi kami lewat tombol order pada buah yang ingin dibeli.</p>
+  </footer>
+
+  <!-- Notification -->
+  <div id="notification" class="notification">
+    Pesanan Anda berhasil dikirim! Kami akan segera menghubungi Anda.
+  </div>
+
+  <script>
+    // Animasi kartu saat halaman dimuat
+    document.addEventListener("DOMContentLoaded", function () {
+      const cards = document.querySelectorAll(".card");
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.animationDelay = `${index * 150}ms`;
+        }, 100);
+      });
+    });
+
+    // Notifikasi saat klik order
+    function showNotification(productName) {
+      const notification = document.getElementById("notification");
+      notification.textContent = `Pemesanan ${productName} berhasil!`;
+      notification.classList.remove("fade-out");
+      notification.style.opacity = "1";
+      notification.style.transform = "translateY(0)";
+
+      setTimeout(() => {
+        notification.classList.add("fade-out");
+        setTimeout(() => {
+          notification.style.opacity = "0";
+          notification.style.transform = "translateY(-20px)";
+        }, 500);
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
