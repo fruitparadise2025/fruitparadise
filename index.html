@@ -5,10 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Katalog Penjualan Buah-Buahan</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Link Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  
   <style>
     body {
       background: #fdfaf6;
       font-family: 'Segoe UI', sans-serif;
+    }
+
+    .header-title {
+      font-family: 'Pacifico', cursive;
+      font-size: 3.5rem;
+      background: linear-gradient(90deg, #34d399, #059669);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.25rem;
+      user-select: none;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    }
+    .header-subtitle {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #065f46;
+      text-align: center;
+      margin-top: 0;
+      user-select: none;
     }
 
     .card {
@@ -74,15 +99,10 @@
 <body class="min-h-screen flex flex-col items-center p-6">
 
   <!-- Header -->
-  <header class="mb-10 text-center max-w-xl">
-    <h1 class="text-4xl font-extrabold text-green-700 mb-2">Fruit Paradise</h1>
-    <p class="text-green-900 font-semibold">Katalog Buah-Buahan.</p>
+  <header class="mb-10 max-w-xl mx-auto">
+    <h1 class="header-title">Fruit Paradise</h1>
+    <p class="header-subtitle">Katalog Buah-Buahan Segar dan Berkualitas</p>
   </header>
-
-
-
-<!-- Search Bar -->
-
 
 <!-- Sorting Dropdown -->
 <div class="mb-6 w-full flex justify-center">
@@ -111,7 +131,7 @@
   <!-- Main Grid -->
   <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl w-full">
     
-    <!-- Card 1: Anggur Mix -->
+    <!-- Card: Anggur Mix -->
     <section class="card bg-white shadow-md overflow-hidden flex flex-col">
       <img 
         src="Anggur Mix.jpeg" 
@@ -127,7 +147,7 @@
       </div>
     </section>
 
-    <!-- Card 2: Mangga Gedong -->
+    <!-- Card: Mangga Gedong -->
     <section class="card bg-white shadow-md overflow-hidden flex flex-col">
       <img 
         src="Mangga Gedong.jpeg" 
@@ -140,20 +160,7 @@
       </div>
     </section>
 
-    <!-- Card 3: Autum Royal Curah -->
-    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
-      <img 
-        src="Autum royal curah.jpeg" 
-        alt="Keranjang berisi anggur autum royal hitam segar memiliki permukaan sedikit mengkilat tersusun rapih" 
-        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
-      <div class="p-4 flex flex-col flex-grow">
-        <h2 class="font-bold text-xl text-green-800 mb-2">Autum Royal Curah</h2>
-        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 75.000 / kg</p>
-        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Autum%20Royal%20Curah" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Autum Royal Curah')">Order Sekarang</a>
-      </div>
-    </section>
-
-    <!-- Card 4: Mangga Kaweni -->
+    <!-- Card: Mangga Kaweni -->
     <section class="card bg-white shadow-md overflow-hidden flex flex-col">
       <img 
         src="Mangga kaweni.jpeg" 
@@ -252,7 +259,7 @@
         loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
       <div class="p-4 flex flex-col flex-grow">
         <h2 class="font-bold text-xl text-green-800 mb-2">Anggur Autum Royal rrc</h2>
-        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 70.000 / kg</p>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 75.000 / kg</p>
         <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Anggur%20Autum%20Royal%20rrc" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Anggur Autum Royal rrc')">Order Sekarang</a>
       </div>
     </section>
@@ -560,16 +567,16 @@
       </div>
     </section>
 
-    <!-- Card: Jambu Kristal Kudus -->
+    <!-- Card: Jambu Citra Kudus -->
     <section class="card bg-white shadow-md overflow-hidden flex flex-col">
       <img 
-        src="Jambu Kristal Kudus.jpeg" 
-        alt="Jambu Kristal Kudus segar" 
+        src="Jambu Citra Kudus.jpeg" 
+        alt="Jambu Citra Kudus segar" 
         loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
       <div class="p-4 flex flex-col flex-grow">
-        <h2 class="font-bold text-xl text-green-800 mb-2">Jambu Kristal Kudus</h2>
+        <h2 class="font-bold text-xl text-green-800 mb-2">Jambu Citra Kudus</h2>
         <p class="text-green-700 flex-grow mb-4 text-sm">Rp 36.000 / kg</p>
-        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Jambu%20Kristal%20Kudus" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Jambu Kristal Kudus')">Order Sekarang</a>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Jambu%20Citra%20Kudus" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Jambu Citra Kudus')">Order Sekarang</a>
       </div>
     </section>
 	
@@ -663,6 +670,48 @@
         <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Kurma%20Muda" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Kurma Muda')">Order Sekarang</a>
       </div>
     </section>
+
+    <!-- Card: Paket Buah Hemat -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Paket Buah Hemat.jpeg" 
+        alt="Paket Buah Hemat" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Paket Buah Hemat</h2>
+        <ul class="text-green-700 flex-grow space-y-1 text-sm mb-4">
+          <li>500gr Pisang Cavendish</li>
+          <li>500gr Pir Century</li>
+          <li>500gr Jeruk Medan Mini</li>
+          <li>500gr Jambu Kristal</li>
+          <li>250gr Anggur Redglobe</li>
+        </ul>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 55.000</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Paket%20Buah%20Hemat" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Paket Buah Hemat')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card: Paket Buah Lengkap -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Paket Buah Lengkap.jpeg" 
+        alt="Paket Buah Lengkap" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Paket Buah Lengkap</h2>
+        <ul class="text-green-700 flex-grow space-y-1 text-sm mb-4">
+          <li>1 pack Buah Lontar</li>
+          <li>500gr Pisang Cavendish</li>
+          <li>350gr Apel Fuji Honestman</li>
+          <li>300gr Lengkeng Bangkok</li>
+          <li>300gr Jeruk Imperial Ausie</li>
+          <li>200gr Anggur Mix</li>
+        </ul>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 85.000</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Paket%20Buah%20Lengkap" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Paket Buah Lengkap')">Order Sekarang</a>
+      </div>
+    </section>
+
   </main>
 
   <!-- Footer -->
